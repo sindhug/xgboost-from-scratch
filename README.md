@@ -36,6 +36,8 @@ We predict a building's power consumption from outdoor temperature — a single 
 
 **[`xgboost_from_scratch.ipynb`](./xgboost_from_scratch.ipynb)** reproduces every number from the video on the exact same dataset — mean → residuals → similarity → gain → splits → learning rate → regularization — then checks the result against the real `xgboost` library. Click the **Open in Colab** badge above; no setup needed.
 
+**[`index.html`](./index.html)** is a scroll-through visual explainer covering the same steps — small interactive widgets (drag the learning-rate, gamma, and lambda sliders yourself) instead of code cells. Open it directly in a browser, or run `python3 -m http.server` from this folder.
+
 ## Status
 
 - [x] Concept walkthrough (this README)
@@ -43,6 +45,7 @@ We predict a building's power consumption from outdoor temperature — a single 
 - [x] Same example verified against real `xgboost` output
 - [x] Video screenshots embedded at each matching step
 - [x] Reality check: real XGBoost trees (exact search, depthwise growth, `hist` binning, `lossguide`) plotted and reconciled against our hand-built tree
+- [x] Scroll-through interactive explainer (`index.html`) with live sliders for η, γ, and λ
 
 ## Support this project
 
