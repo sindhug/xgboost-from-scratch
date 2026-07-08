@@ -2,6 +2,7 @@
 
 **A hands-on, numbers-first walkthrough of how XGBoost actually works** — residuals, similarity scores, gain, learning rate, and regularization, all worked out by hand on a tiny dataset, then verified against the real `xgboost` library.
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sindhug/xgboost-from-scratch/blob/main/xgboost_from_scratch.ipynb)
 [![Watch the video](https://img.shields.io/badge/YouTube-Watch%20the%20video-red?logo=youtube)](https://youtu.be/Y0EJQFj0foo)
 ![Stars](https://img.shields.io/github/stars/sindhug/xgboost-from-scratch?style=social)
 
@@ -31,11 +32,15 @@ We predict a building's power consumption from outdoor temperature — a single 
 - **Part 4 — Regularization (lambda)**: how lambda shrinks similarity and leaf values toward zero, how gamma acts as a toll on gain, and why together they keep trees modest
 - **What makes it "Extreme"**: curvature-aware splits, built-in regularization, native handling of missing/sparse data, and the speed optimizations that make it viable on large datasets
 
+## Run it yourself
+
+**[`xgboost_from_scratch.ipynb`](./xgboost_from_scratch.ipynb)** reproduces every number from the video on the exact same dataset — mean → residuals → similarity → gain → splits → learning rate → regularization — then checks the result against the real `xgboost` library. Click the **Open in Colab** badge above; no setup needed.
+
 ## Status
 
 - [x] Concept walkthrough (this README)
-- [ ] Notebook reproducing the worked example by hand (residuals → similarity → gain → splits)
-- [ ] Same example verified against real `xgboost` output
+- [x] Notebook reproducing the worked example by hand (residuals → similarity → gain → splits)
+- [x] Same example verified against real `xgboost` output
 - [ ] Visualizations of tree growth across boosting rounds
 
 ## Support this project
