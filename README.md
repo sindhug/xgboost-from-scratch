@@ -41,7 +41,8 @@ We predict a building's power consumption from outdoor temperature — a single 
 - [x] Concept walkthrough (this README)
 - [x] Notebook reproducing the worked example by hand (residuals → similarity → gain → splits)
 - [x] Same example verified against real `xgboost` output
-- [ ] Visualizations of tree growth across boosting rounds
+- [x] Video screenshots embedded at each matching step
+- [x] Reality check: real XGBoost trees (exact search, depthwise growth, `hist` binning, `lossguide`) plotted and reconciled against our hand-built tree
 
 ## Support this project
 
