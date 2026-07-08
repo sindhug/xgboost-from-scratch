@@ -2,6 +2,8 @@
 
 **A hands-on, numbers-first walkthrough of how XGBoost actually works** — residuals, similarity scores, gain, learning rate, and regularization, all worked out by hand on a tiny dataset, then verified against the real `xgboost` library.
 
+![The full journey: mean, residuals, split, tree, prediction, then a real XGBoost reality check](assets/images/00_full_journey_hero.png)
+
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sindhug/xgboost-from-scratch/blob/main/xgboost_from_scratch.ipynb)
 [![Watch the video](https://img.shields.io/badge/YouTube-Watch%20the%20video-red?logo=youtube)](https://youtu.be/Y0EJQFj0foo)
 ![Stars](https://img.shields.io/github/stars/sindhug/xgboost-from-scratch?style=social)
@@ -9,6 +11,20 @@
 > 📺 Companion repo for **[XGBoost Explained: How the Algorithm Actually Works (Step-by-Step)](https://youtu.be/Y0EJQFj0foo)** by Schovia Labs.
 
 [![XGBoost Explained](https://img.youtube.com/vi/Y0EJQFj0foo/maxresdefault.jpg)](https://youtu.be/Y0EJQFj0foo)
+
+**Most tutorials show `model.fit()`. This repo shows the actual numbers XGBoost computes before it ever fits a model.**
+
+> [!TIP]
+> **By the end, you will be able to explain:**
+> 1. Why XGBoost starts with a base prediction
+> 2. How residuals become the target for the next tree
+> 3. How similarity score and gain choose a split
+> 4. What learning rate, gamma, and lambda actually do
+> 5. Why real XGBoost may build a slightly different tree than the hand demo
+
+- **Level:** beginner-friendly, but assumes basic Python and decision-tree intuition
+- **Time:** 30–45 minutes
+- **Setup:** none — open directly in Colab
 
 ---
 
