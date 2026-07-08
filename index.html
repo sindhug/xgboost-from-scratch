@@ -223,7 +223,7 @@
     <span class="step-num">01 · The Data</span>
     <h2>A building, a thermostat, and a power bill</h2>
     <p>Ten readings: outdoor temperature versus the power a building consumed. Cold days and
-       hot days both push power use up — heating and cooling both cost energy. That's the whole
+       hot days both push power use up. Heating and cooling both cost energy. That's the whole
        dataset we'll use for the entire video.</p>
     <div class="viz">
       <svg viewBox="0 0 640 190" width="100%" id="chart-svg">
@@ -241,21 +241,21 @@
     <span class="step-num">02 · The Big Idea</span>
     <h2>Many small trees, added one at a time</h2>
     <p>A single small tree is a rough sketch. <strong>Boosting</strong> adds another small tree
-       that focuses only on the leftover mistakes — the <em>residuals</em> — then another, and
-       another, each nudging the prediction a little closer. This is different from Random
-       Forest, which grows many trees independently and averages them.</p>
+       that focuses only on the leftover mistakes, the <em>residuals</em>. Then another tree
+       gets added, and another, each nudging the prediction a little closer. This is different
+       from Random Forest, which grows many trees independently and averages them.</p>
     <div class="viz" style="display:flex; gap:24px; flex-wrap:wrap; justify-content:center;">
       <div style="text-align:center;">
         <svg viewBox="0 0 160 110" width="160" height="110">
           <g id="forest-trees"></g>
         </svg>
-        <div class="muted" style="font-size:.8rem;">Random Forest — parallel, then average</div>
+        <div class="muted" style="font-size:.8rem;">Random Forest: parallel, then average</div>
       </div>
       <div style="text-align:center;">
         <svg viewBox="0 0 220 110" width="220" height="110">
           <g id="boost-trees"></g>
         </svg>
-        <div class="muted" style="font-size:.8rem;">Boosting — sequential, each fixes the last</div>
+        <div class="muted" style="font-size:.8rem;">Boosting: sequential, each fixes the last</div>
       </div>
     </div>
   </section>
@@ -286,8 +286,8 @@
   <section class="step" id="s-residuals">
     <span class="step-num">04 · Residuals</span>
     <h2>How wrong is that guess, for each point?</h2>
-    <p>Subtract the mean from every actual value. That leftover error is the <strong>residual</strong>
-       — and it's the new thing our first tree will try to predict.</p>
+    <p>Subtract the mean from every actual value. That leftover error is the <strong>residual</strong>.
+       It's the new thing our first tree will try to predict.</p>
     <div class="viz">
       <svg viewBox="0 0 640 190" width="100%" id="resid-svg">
         <g class="chart-gridlines"></g>
@@ -309,8 +309,8 @@
     <span class="step-num">05 · Finding the Split</span>
     <h2>Which threshold best separates the residuals?</h2>
     <p>We test candidate thresholds. For each one, residuals get sent left or right, and we
-       score the split by <strong>gain</strong> — how much better grouped the residuals are
-       after the split than before. Watch the three candidates below:</p>
+       score the split by <strong>gain</strong>. Gain measures how much better grouped the
+       residuals are after the split than before. Watch the three candidates below:</p>
     <div class="viz">
       <div id="cand-badges" style="margin-bottom:18px;">
         <span class="cand-badge" data-thr="2.5">temp ≤ 2.5 &nbsp; gain = 30.04</span>
@@ -323,16 +323,16 @@
       </svg>
     </div>
     <div class="callout" id="split-winner-callout" style="opacity:0;transition:opacity .5s;">
-      ✓ <strong>7.5</strong> gives the highest gain — it becomes the root split.
+      ✓ <strong>7.5</strong> gives the highest gain. It becomes the root split.
     </div>
   </section>
 
   <!-- ============ STEP: GROW TREE ============ -->
   <section class="step" id="s-tree">
     <span class="step-num">06 · Growing the Tree</span>
-    <h2>One split isn't enough — grow one more level</h2>
-    <p>We could split either child further. Splitting the tiny left child only gains 4.5;
-       splitting the bigger right child at 37.5 gains 35.04. We take the better one.</p>
+    <h2>One split isn't enough. Grow one more level</h2>
+    <p>We could split either child further. Splitting the tiny left child only gains 4.5.
+       Splitting the bigger right child at 37.5 gains 35.04. We take the better one.</p>
     <div class="viz" style="position:relative;">
       <svg viewBox="0 0 320 190" width="100%" id="tree-svg" style="max-width:420px;display:block;margin:0 auto;">
         <g id="tree-edges"></g>
@@ -364,7 +364,7 @@
     <span class="step-num">08 · Learning Rate (η)</span>
     <h2>Turn down the volume on every correction</h2>
     <p>η (eta) scales each tree's correction before it's added. Smaller η means smaller, safer
-       steps — and larger residuals left over for the next tree to learn from. Try it:</p>
+       steps. It also leaves larger residuals for the next tree to learn from. Try it:</p>
     <div class="viz">
       <div class="control">
         <label><span>η (learning rate)</span><span id="eta-val">0.50</span></label>
@@ -440,12 +440,12 @@
   <!-- ============ STEP: EXTREME ============ -->
   <section class="step" id="s-extreme">
     <span class="step-num">11 · What Makes It "Extreme"</span>
-    <h2>Still gradient boosting — just tuned for scale</h2>
+    <h2>Still gradient boosting, just tuned for scale</h2>
     <ul class="fade-list">
       <li>🎯 Uses both the error <em>and its curvature</em> to pick splits faster</li>
       <li>🛡️ Bakes in regularization (λ and γ) to resist overfitting</li>
       <li>🧩 Handles missing and sparse data natively</li>
-      <li>⚡ Heavily optimized — the same math, just fast enough for millions of rows</li>
+      <li>⚡ Heavily optimized. Same math, just fast enough for millions of rows</li>
     </ul>
   </section>
 
@@ -453,9 +453,9 @@
   <section class="step" id="s-reality">
     <span class="step-num">12 · Reality Check</span>
     <h2>Would the real XGBoost library agree?</h2>
-    <p>We tested only 3 candidate thresholds by hand. Real XGBoost tests every possible one —
-       and by default grows <em>every</em> eligible branch, not just the single best one. On
-       this dataset, our thresholds and leaf values turn out to be exactly right; the real
+    <p>We tested only 3 candidate thresholds by hand. Real XGBoost tests every possible one.
+       By default it also grows <em>every</em> eligible branch, not just the single best one.
+       On this dataset, our thresholds and leaf values turn out to be exactly right. The real
        tree just ends up one split bushier:</p>
     <div class="viz">
       <img class="diagram" src="https://raw.githubusercontent.com/sindhug/xgboost-from-scratch/main/assets/images/16_tree0_comparison.png" alt="Our hand-built tree next to the real XGBoost tree, side by side">
@@ -470,8 +470,8 @@
 <section class="cta">
   <div class="wrap">
     <h2>Want to run every number yourself?</h2>
-    <p>The full notebook reproduces everything on this page — plus regularization sweeps,
-       a real XGBoost fit, and a from-scratch vs. real-library comparison.</p>
+    <p>The full notebook reproduces everything on this page. It also adds regularization
+       sweeps, a real XGBoost fit, and a from-scratch vs. real-library comparison.</p>
     <div class="cta-buttons">
       <a class="btn btn-primary" href="https://colab.research.google.com/github/sindhug/xgboost-from-scratch/blob/main/xgboost_from_scratch.ipynb" target="_blank" rel="noopener">
         Open the notebook in Colab
